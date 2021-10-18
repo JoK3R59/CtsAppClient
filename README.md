@@ -33,10 +33,6 @@ Project APP mobil for customer
     2. mais **git** est intelligent et te donne la ligne de commande à exécuter pour créer la branche distante sur `origin` et faire un _push_ qui fonctionne !
 - `git merge nomDeLaBranche` : rattache ma branche au master de la branche principale (master) ==> nécessite de résoudre les conflits !
 
-- (Hors Terminal) Avec Git, lorsqu'une fonctionnalité est terminée, on peut vouloir que ses collègues viennent vérifier le code produit.
-Pour cela, il existe les _Pull Requests_ 
--> https://github.com/O-clock-Alumni/fiches-recap/blob/master/ldc/git-pull-request.md
-
 
 Pour un dossier de travail donné, Git manipule différents « espaces virtuels » :
 
