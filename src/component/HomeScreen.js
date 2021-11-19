@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 
 import _subLogin from '../_shared/_subLogin';
 
-const HomeScreen = ( props ) => {
+const HomeScreen = ({ navigation }) => {
 
     return (
 
@@ -18,6 +18,14 @@ const HomeScreen = ( props ) => {
             <Text style = { styles.header }>
                 Demande de livraison :
             </Text>
+
+            <Button
+             onPress={ () => {
+                 navigation.navigate('Contact')
+             }}
+             title="Nous Contacter"
+             color="#841584"
+            />
         </View>
     )
 };
