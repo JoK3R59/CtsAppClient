@@ -7,9 +7,7 @@ const NewDelivery = ( props ) => {
 
         <View style = { styles.container }>
             
-            <Text>
-                NewDelivery Screen
-            </Text>
+            <Text>NewDelivery Screen</Text>
         </View>
     )
 };

@@ -7,9 +7,7 @@ const ContactScreen = ( props ) => {
 
         <View style = { styles.container }>
             
-            <Text>
-                Contact Screen
-            </Text>
+            <Text>Contact Screen</Text>
         </View>
     )
 };

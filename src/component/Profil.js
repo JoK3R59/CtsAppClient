@@ -7,9 +7,7 @@ const Profil = ( props ) => {
 
         <View style = { styles.container }>
             
-            <Text>
-                Profil Screen
-            </Text>
+            <Text>Profil Screen</Text>
         </View>
     )
 };

@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 
 import _subLogin from '../_shared/_subLogin';
+import DeliveryProgress from './DeliveryProgress';
+import DeliveryRequest from './DeliveryRequest';
 
 const HomeScreen = ({ navigation }) => {
 
@@ -15,9 +17,13 @@ const HomeScreen = ({ navigation }) => {
                 Livraison en cours... :
             </Text>
 
+            <DeliveryProgress />
+
             <Text style = { styles.header }>
                 Demande de livraison :
             </Text>
+
+            <DeliveryRequest />
 
             <Button
              onPress={ () => {
