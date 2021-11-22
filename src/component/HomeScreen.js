@@ -11,7 +11,7 @@ const HomeScreen = ({ navigation }) => {
 
         <View  style = { styles.container }>
 
-            <_subLogin />
+            <_subLogin navigation = { navigation }/>
 
             <Text style = { styles.header }>
                 Livraison en cours... :

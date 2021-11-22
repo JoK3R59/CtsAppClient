@@ -1,21 +1,41 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 
 import { FontAwesome5 } from '@expo/vector-icons';
 
-const _subLogin = ( props ) => {
+// Gestion du statut Login dans HomeScreen
+// true = utilisateur enregistré || false = utilisateur non enregistré
+const loginStatut = false
 
-    return (
+const _subLogin = ({ navigation }) => {
 
-        <View style = { styles.container }>
+    if (!loginStatut) {
 
-            <Text style = { styles.font }>
-                Bonjour Utilisateur ! 
-            </Text>
+        return (
+            <View style = { styles.container }>
+    
+            <Button
+             onPress={ () => {
+                navigation.navigate('Inscription')
+             }}
+             title="Inscription"
+             color="#841584"
+            />
+            </View>
+        )
+    } else {
+        return (
 
-            <FontAwesome5 name="hand-spock" size={48} color="black" style = {{ marginLeft: 10 }}/>
-        </View>
-    )
+            <View style = { styles.container }>
+    
+                <Text style = { styles.font }>
+                    Bonjour Utilisateur ! 
+                </Text>
+    
+                <FontAwesome5 name="hand-spock" size={48} color="black" style = {{ marginLeft: 10 }}/>
+            </View>
+        )
+    }
 };
 
 const styles = StyleSheet.create ({

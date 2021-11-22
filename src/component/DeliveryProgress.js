@@ -36,16 +36,14 @@ const styles = StyleSheet.create ({
         fontSize: 24
     },
     box: {
-        marginTop: 12,
-        marginBottom: 12,
+        marginVertical: 12,
         padding: 10,
         borderWidth: 0.5,
     },
     content: {
         alignItems: 'center',
         justifyContent: 'center',
-        paddingLeft: 12,
-        paddingRight: 12
+        paddingHorizontal: 12
     }
 });
 
