@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Dimensions, Button } from 'react-native';
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import _UserRegister from './_registration/_UserRegister';
+import _DataRegister from './_registration/_DataRegister';
 
 const { width } = Dimensions.get('window');
 
 const RegistrationScreen = () => {
+
+    const [ stepRegister, setStepRegister ] = useState(false)
+
+    const [ titleButton, setTitleButton ] = useState('Suivant')
+
+    const onChangeStepRegister = () => {
+
+        setStepRegister(true)
+
+        setTitleButton('Terminer')
+
+        setIconUserActive('black')
+
+        setIconAccountActive('#8102d2')
+    };
+    
+    const [ iconUserActive, setIconUserActive ] = useState('#8102d2')
+
+    const [ iconAccountActive, setIconAccountActive ] = useState('black')
     
     return (
 
@@ -14,32 +34,40 @@ const RegistrationScreen = () => {
 
             <View style = { styles.statusContainer }>
 
-                <View style = { styles.statusContent }>
+                <View
+                 style = { !stepRegister ?
+                 [styles.statusContent, styles.iconActive] :
+                 styles.statusContent }
+                >
 
                     <FontAwesome name="user"
-                     size = { 32 }
-                     color= '#8102d2'
+                     size={ 32 }
+                     color={ iconUserActive }
                     />
 
-                    <Text>Compte</Text>
+                    <Text style = {{ color: iconUserActive }}>Compte</Text>
                 </View>
 
-                <View style = { styles.statusContent }>
+                <View
+                 style = { stepRegister ?
+                 [styles.statusContent, styles.iconActive] :
+                 styles.statusContent }
+                >
 
                     <MaterialCommunityIcons name="card-account-details-outline"
                      size={ 32 }
-                     color="black"
+                     color={ iconAccountActive }
                     />
 
-                    <Text>Données</Text>
+                    <Text style = {{ color: iconAccountActive }}>Données</Text>
                 </View>
             </View>
 
-            <_UserRegister />
+            { !stepRegister ? <_UserRegister /> : <_DataRegister />}
 
             <Button
-             onPress={ () => {}}
-             title= "Suivant"
+             onPress={ () => { onChangeStepRegister() }}
+             title={ titleButton }
              color="#841584"
             />
         </View>
@@ -64,6 +92,8 @@ const styles = StyleSheet.create({
         marginVertical: 12,
         paddingHorizontal: 20,
         paddingVertical: 12,
+    },
+    iconActive: {
         borderBottomWidth: 3,
         borderColor: '#8102d2'
     }

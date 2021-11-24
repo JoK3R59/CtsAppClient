@@ -6,19 +6,22 @@ const _DataRegister = () => {
     const [ lastName, setLastName ] = useState('')
 
     const onChangeLastName = value => {
+
         setLastName(value)
     };
 
     const [ firstName, setFirstName ] = useState('')
 
     const onChangeFirstName = value => {
+
         setFirstName(value)
     };
 
-    const [ againPassword, setAgainPassword ] = useState('')
+    const [ phoneNumber, setPhoneNumber ] = useState('')
 
-    const onChangeAgainPassword = value => {
-        setAgainPassword(value)
+    const onChangePhoneNumber = value => {
+
+        setPhoneNumber(value)
     };
 
     return (
@@ -26,26 +29,75 @@ const _DataRegister = () => {
 
             <View>
 
-                <Text>Nom :</Text>
-                
-                <TextInput style = { styles.backgroundStyle }
-                    placeholder = "Votre Nom"
-                    value = { lastName }
-                    onChangeText = { onChangeLastName }
-                />
+                <View>
+
+                    <Text>Nom :</Text>
+                    
+                    <TextInput style = { styles.backgroundStyle }
+                     placeholder = "Votre nom"
+                     value = { lastName }
+                     onChangeText = { onChangeLastName }
+                    />
+                </View>
+
+                <View>
+
+                    <Text>Prénom :</Text>
+                    
+                    <TextInput style = { styles.backgroundStyle }
+                     placeholder = "Votre prénom"
+                     value = { firstName }
+                     onChangeText = { onChangeFirstName }
+                    />
+                </View>
+
+                <View>
+
+                    <Text>Numéros de téléphone :</Text>
+                    
+                    <TextInput style = { styles.backgroundStyle }
+                     placeholder = "0102030405"
+                     value = { phoneNumber }
+                     onChangeText = { onChangePhoneNumber }
+                    />
+                </View>
             </View>
 
             <View>
 
-                <Text>Prénom :</Text>
-                
-                <TextInput style = { styles.backgroundStyle }
-                    placeholder = "Votre Prénom"
-                    value = { firstName }
-                    onChangeText = { onChangeFirstName }
-                />
-            </View>
+                <View>
 
+                    <Text>Adresse :</Text>
+
+                    <TextInput style = { styles.backgroundStyle }
+                     placeholder = "Votre adresse"
+                     value = { lastName }
+                     onChangeText = { onChangeLastName }
+                    />
+                </View>
+
+                <View>
+
+                    <Text>Code Postal :</Text>
+                    
+                    <TextInput style = { styles.backgroundStyle }
+                     placeholder = "01234"
+                     value = { lastName }
+                     onChangeText = { onChangeLastName }
+                    />
+                </View>
+
+                <View>
+
+                    <Text>Ville :</Text>
+                    
+                    <TextInput style = { styles.backgroundStyle }
+                     placeholder = "Votre ville"
+                     value = { lastName }
+                     onChangeText = { onChangeLastName }
+                    />
+                </View>
+            </View>
         </View>
     )
 };
