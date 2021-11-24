@@ -29,7 +29,7 @@ const _DataRegister = () => {
 
             <View>
 
-                <View>
+                <View style = { styles.viewContent }>
 
                     <Text>Nom :</Text>
                     
@@ -40,7 +40,7 @@ const _DataRegister = () => {
                     />
                 </View>
 
-                <View>
+                <View style = { styles.viewContent }>
 
                     <Text>Prénom :</Text>
                     
@@ -51,7 +51,7 @@ const _DataRegister = () => {
                     />
                 </View>
 
-                <View>
+                <View style = { styles.viewContent }>
 
                     <Text>Numéros de téléphone :</Text>
                     
@@ -65,7 +65,7 @@ const _DataRegister = () => {
 
             <View>
 
-                <View>
+                <View style = { styles.viewContent }>
 
                     <Text>Adresse :</Text>
 
@@ -76,7 +76,7 @@ const _DataRegister = () => {
                     />
                 </View>
 
-                <View>
+                <View style = { styles.viewContent }>
 
                     <Text>Code Postal :</Text>
                     
@@ -87,7 +87,7 @@ const _DataRegister = () => {
                     />
                 </View>
 
-                <View>
+                <View style = {[ styles.viewContent, { marginBottom: 32 } ]}>
 
                     <Text>Ville :</Text>
                     
@@ -112,6 +112,9 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         borderColor: 'gray',
         marginTop: 8
+    },
+    viewContent: {
+        marginVertical: 8
     }
 });
 
