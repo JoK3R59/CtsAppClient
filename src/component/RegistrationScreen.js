@@ -7,13 +7,17 @@ import _DataRegister from './_registration/_DataRegister';
 
 const { width } = Dimensions.get('window');
 
-const RegistrationScreen = () => {
+const RegistrationScreen = ({ navigation }) => {
 
     const [ stepRegister, setStepRegister ] = useState(false)
 
     const [ titleButton, setTitleButton ] = useState('Suivant')
 
     const onChangeStepRegister = () => {
+
+        if (titleButton === 'Terminer') {
+            navigation.navigate('Connexion', {nextSTepRegister : true})
+        }
 
         setStepRegister(true)
 
@@ -67,8 +71,8 @@ const RegistrationScreen = () => {
 
             <Button
              onPress={ () => { onChangeStepRegister() }}
-             title={ titleButton }
-             color="#841584"
+             title= { titleButton }
+             color= "#841584"
             />
         </View>
     )

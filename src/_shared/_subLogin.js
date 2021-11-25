@@ -21,6 +21,14 @@ const _subLogin = ({ navigation }) => {
              title="Inscription"
              color="#841584"
             />
+
+            <Button
+             onPress={ () => {
+                navigation.navigate('Connexion')
+             }}
+             title="Connexion"
+             color="#06d6a0"
+            />
             </View>
         )
     } else {
