@@ -54,6 +54,8 @@ const LoginScreen = (nextSTepRegister) => {
              title= 'Connexion'
              color= "#06d6a0"
             />
+
+
         </View>
     )
 };

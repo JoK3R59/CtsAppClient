@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Dimensions, Button } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Button } from 'react-native';
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+
+import { auth } from '../utils/helpers';
 
 import _UserRegister from './_registration/_UserRegister';
 import _DataRegister from './_registration/_DataRegister';
+import _LoginBtn from './_login/_LoginBtn';
 
 const { width } = Dimensions.get('window');
 
@@ -18,19 +21,19 @@ const RegistrationScreen = ({ navigation }) => {
         if (titleButton === 'Terminer') {
             navigation.navigate('Connexion', {nextSTepRegister : true})
         }
-
         setStepRegister(true)
-
         setTitleButton('Terminer')
-
         setIconUserActive('black')
-
         setIconAccountActive('#8102d2')
     };
     
     const [ iconUserActive, setIconUserActive ] = useState('#8102d2')
 
     const [ iconAccountActive, setIconAccountActive ] = useState('black')
+
+    const handleLogin = () => {
+        auth()
+    };
     
     return (
 
@@ -74,6 +77,8 @@ const RegistrationScreen = ({ navigation }) => {
              title= { titleButton }
              color= "#841584"
             />
+
+            <_LoginBtn onPress = { handleLogin }/>
         </View>
     )
 };
