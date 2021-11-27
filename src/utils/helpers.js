@@ -1,5 +1,8 @@
+// import Platform pour savoir le type de mobile utilisé ios = Apple || md = Android
+// import AsyncStorage permet de stocker des données dans le stockage mobile
 import { Platform, AsyncStorage } from "react-native";
 
+// import * as Google permet l'authentification de l'utilisateur via Google
 import * as Google from 'expo-google-app-auth';
 
 export const prefix = Platform.OS === 'ios' ? 'ios' : 'md';
@@ -12,15 +15,16 @@ export const config = {
     androidStandaloneAppClientId: `<YOUR_ANDROID_CLIENT_ID>`,
 };
 
+// Methode permettant d'obtenir l'authentification via Google compte
 export const auth = async () => {
     try {
         // const result = await Google.logInAsync(config)
         // console.log('resultat de la demande Google auth', result)
         const { user, type } = await Google.logInAsync(config)
         if (type === 'success') {
-            //stocker l'utilisateur dans la BDD
+            // stocker l'utilisateur dans la BDD
 
-            //stocker l'utilisateur dans la mémoire interne
+            // stocker l'utilisateur dans la mémoire interne
             // AsyncStorage.setItem('key', '')
             const { name, photoUrl, email } = user
             await AsyncStorage.setItem('user', JSON.stringify({
@@ -29,7 +33,7 @@ export const auth = async () => {
                 email
             }))
             // naviguer vers l'écran Home
-            console.log('Après Connexion, Naviguer vers HomeScreen')
+            console.log('Après Connexion Succès, Naviguer vers HomeScreen')
         }
     } catch(e) {
         console.error('error auth', e)

@@ -3,14 +3,14 @@ import { StyleSheet, Text, View } from 'react-native';
 
 const DeliveryProgress = () => {
     return (
-        <View style = {[styles.box, { flexDirection : "row" }]}>
+        <View style = {[ styles.box, { flexDirection : "row" }]}>
 
             <View style = { styles.content }>
 
                 <Text>2 Produits</Text>
             </View>
 
-            <View style = {[styles.content, { flexDirection : "column" }]}>
+            <View style = {[ styles.content, { flexDirection : "column" }]}>
 
                 <Text>Mardi 25 Septembre</Text>
 

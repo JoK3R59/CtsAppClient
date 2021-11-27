@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const NewDelivery = ( props ) => {
+const NewDelivery = (props) => {
 
     return (
 
