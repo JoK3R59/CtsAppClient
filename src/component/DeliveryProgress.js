@@ -2,7 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 const DeliveryProgress = () => {
+
     return (
+        
         <View style = {[ styles.box, { flexDirection : "row" }]}>
 
             <View style = { styles.content }>

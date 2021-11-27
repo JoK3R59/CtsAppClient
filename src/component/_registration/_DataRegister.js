@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Dimensions } from 'react-native';
+
+const { width } = Dimensions.get('window');
 
 const _DataRegister = () => {
 
@@ -25,9 +27,10 @@ const _DataRegister = () => {
     };
 
     return (
+        
         <View style = {{ alignItems: 'center', justifyContent: 'center' }}>
 
-            <View>
+            <View style = { styles.topContent }>
 
                 <View style = { styles.viewContent }>
 
@@ -63,13 +66,13 @@ const _DataRegister = () => {
                 </View>
             </View>
 
-            <View>
+            <View  style = { styles.bottomContent }>
 
                 <View style = { styles.viewContent }>
 
                     <Text>Adresse :</Text>
 
-                    <TextInput style = { styles.backgroundStyle }
+                    <TextInput style = {[ styles.backgroundStyle, { width: width - 175 }]}
                      placeholder = "Votre adresse"
                      value = { lastName }
                      onChangeText = { onChangeLastName }
@@ -107,7 +110,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#f0eeee',
         padding: 10,
         height: 40,
-        width: 200,
+        width: 125,
         borderWidth: 1,
         borderRadius: 5,
         borderColor: 'gray',
@@ -115,6 +118,20 @@ const styles = StyleSheet.create({
     },
     viewContent: {
         marginVertical: 8
+    },
+    topContent: {
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: 'space-between',
+        paddingHorizontal: 50,
+        width: width - 75
+    },
+    bottomContent: {
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: 'space-between',
+        paddingHorizontal: 50,
+        width: width - 75
     }
 });
 

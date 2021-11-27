@@ -1,37 +1,41 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, Dimensions } from 'react-native';
 
 import { FontAwesome5 } from '@expo/vector-icons';
 
 // Gestion du statut Login dans HomeScreen
 // true = utilisateur enregistré || false = utilisateur non enregistré
-const loginStatut = false
+const loginStatut = false;
+
+const { width } = Dimensions.get('window');
 
 const _subLogin = ({ navigation }) => {
 
     if (!loginStatut) {
 
         return (
+            
             <View style = { styles.container }>
     
-            <Button
-             onPress={ () => {
-                navigation.navigate('Inscription')
-             }}
-             title="Inscription"
-             color="#841584"
-            />
+                <Button
+                onPress={ () => {
+                    navigation.navigate('Inscription')
+                }}
+                title="Inscription"
+                color="#841584"
+                />
 
-            <Button
-             onPress={ () => {
-                navigation.navigate('Connexion')
-             }}
-             title="Connexion"
-             color="#06d6a0"
-            />
+                <Button
+                onPress={ () => {
+                    navigation.navigate('Connexion')
+                }}
+                title="Connexion"
+                color="#06d6a0"
+                />
             </View>
         )
     } else {
+
         return (
 
             <View style = { styles.container }>
@@ -49,13 +53,15 @@ const _subLogin = ({ navigation }) => {
 const styles = StyleSheet.create ({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        // justifyContent: 'center',
         flexDirection: 'row',
+        justifyContent: 'space-around',
         alignItems: 'center',
-        maxHeight: 100,
+        maxHeight: 80,
         width: '100%',
         borderWidth: 0.5,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        width: width
     },
     font: {
         fontSize: 24,

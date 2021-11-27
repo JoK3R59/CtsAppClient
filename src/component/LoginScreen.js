@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 
 const textLogin = 'Introduisez votre adresse e-mail et votre mot de passe pour accéder à votre compte.';
 
@@ -23,13 +24,17 @@ const LoginScreen = (nextSTepRegister) => {
 
         <View style = { styles.container }>
 
+            <FontAwesome name="user-circle-o" size={64} color="black" />
+
             <Text style = { styles.textStyle }>
                 { !nextSTepRegister ? textNextStepRegister : textLogin }
             </Text>
 
-            <View style = { styles.viewContent }>
+            <View>
 
-                <Text>Utilisateur :</Text>
+                <Text style = { styles.viewContent }>
+                    Utilisateur :
+                </Text>
 
                 <TextInput style = { styles.backgroundStyle }
                  placeholder = "Votre Adresse E-mail"
@@ -38,9 +43,11 @@ const LoginScreen = (nextSTepRegister) => {
                 />
             </View>
 
-            <View style = {[ styles.viewContent, { marginBottom: 64 }]}>
+            <View style = {{ marginBottom: 64 }}>
 
-                <Text>Mot de passe :</Text>
+                <Text style = { styles.viewContent }>
+                    Mot de passe :
+                </Text>
 
                 <TextInput style = { styles.backgroundStyle }
                  placeholder = "*****"
@@ -54,8 +61,6 @@ const LoginScreen = (nextSTepRegister) => {
              title= 'Connexion'
              color= "#06d6a0"
             />
-
-
         </View>
     )
 };
@@ -65,13 +70,12 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         alignItems: 'center',
-        // justifyContent: 'center',
+        justifyContent: 'space-evenly',
         backgroundColor: '#fff'
     },
     textStyle: {
         textAlign: 'center',
-        marginHorizontal: 110,
-        marginVertical: 50
+        marginHorizontal: 110
     },
     viewContent: {
         marginVertical: 8
@@ -83,8 +87,7 @@ const styles = StyleSheet.create({
         width: 200,
         borderWidth: 1,
         borderRadius: 5,
-        borderColor: 'gray',
-        marginTop: 8
+        borderColor: 'gray'
     }
 });
 

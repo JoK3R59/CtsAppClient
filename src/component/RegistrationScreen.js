@@ -84,8 +84,8 @@ const RegistrationScreen = ({ navigation }) => {
              title= { titleButton }
              color= "#841584"
             />
-
-            <_LoginBtn onPress = { handleLogin }/>
+            
+            { !stepRegister ? <_LoginBtn onPress = { handleLogin }/> : null }
         </View>
     )
 };
