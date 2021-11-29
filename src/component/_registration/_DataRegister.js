@@ -26,6 +26,27 @@ const _DataRegister = () => {
         setPhoneNumber(value)
     };
 
+    const [ adress, setAdress ] = useState('')
+
+    const onChangeAdress = value => {
+
+        setAdress(value)
+    };
+
+    const [ zipCode, setZipCode ] = useState('')
+
+    const onChangeZipCode = value => {
+
+        setZipCode(value)
+    };
+
+    const [ city, setCity ] = useState('')
+
+    const onChangeCity = value => {
+
+        setCity(value)
+    };
+
     return (
         
         <View style = {{ alignItems: 'center', justifyContent: 'center' }}>
@@ -74,8 +95,8 @@ const _DataRegister = () => {
 
                     <TextInput style = {[ styles.backgroundStyle, { width: width - 175 }]}
                      placeholder = "Votre adresse"
-                     value = { lastName }
-                     onChangeText = { onChangeLastName }
+                     value = { adress }
+                     onChangeText = { onChangeAdress }
                     />
                 </View>
 
@@ -85,8 +106,8 @@ const _DataRegister = () => {
                     
                     <TextInput style = { styles.backgroundStyle }
                      placeholder = "01234"
-                     value = { lastName }
-                     onChangeText = { onChangeLastName }
+                     value = { zipCode }
+                     onChangeText = { onChangeZipCode }
                     />
                 </View>
 
@@ -96,8 +117,8 @@ const _DataRegister = () => {
                     
                     <TextInput style = { styles.backgroundStyle }
                      placeholder = "Votre ville"
-                     value = { lastName }
-                     onChangeText = { onChangeLastName }
+                     value = { city }
+                     onChangeText = { onChangeCity }
                     />
                 </View>
             </View>

@@ -6,7 +6,9 @@ const textLogin = 'Introduisez votre adresse e-mail et votre mot de passe pour a
 
 const textNextStepRegister = 'Accéder à votre boite e-mail pour valider votre compte, puis connectez-vous';
 
-const LoginScreen = (nextSTepRegister) => {
+const LoginScreen = ({ route }) => {
+
+    // console.log(route.params)
 
     const [ email, setEmail ] = useState('')
 
@@ -19,6 +21,16 @@ const LoginScreen = (nextSTepRegister) => {
     const onChangePassword = value => {
         setPassword(value)
     };
+
+    // function permettant de vérifier si l'utilisateur provient de la page Inscription, ainsi le texte de la page Connexion changera
+    const onChangeStepRegister = () => {
+
+        if ( route.params !== undefined ) {
+            return true
+        } else {
+            return false
+        }
+    };
     
     return (
 
@@ -27,7 +39,7 @@ const LoginScreen = (nextSTepRegister) => {
             <FontAwesome name="user-circle-o" size={64} color="black" />
 
             <Text style = { styles.textStyle }>
-                { !nextSTepRegister ? textNextStepRegister : textLogin }
+                { onChangeStepRegister() ? textNextStepRegister : textLogin }
             </Text>
 
             <View>

@@ -23,7 +23,7 @@ const RegistrationScreen = ({ navigation }) => {
     const onChangeStepRegister = () => {
 
         if (titleButton === 'Terminer') {
-            navigation.navigate('Connexion', {nextSTepRegister : true})
+            navigation.navigate('Connexion', { nextStepRegister : true })
         }
         setStepRegister(true)
         setTitleButton('Terminer')
@@ -50,7 +50,7 @@ const RegistrationScreen = ({ navigation }) => {
 
                 <View
                  style = { !stepRegister ?
-                 [styles.statusContent, styles.iconActive] :
+                 [ styles.statusContent, styles.iconActive ] :
                  styles.statusContent }
                 >
 
@@ -64,7 +64,7 @@ const RegistrationScreen = ({ navigation }) => {
 
                 <View
                  style = { stepRegister ?
-                 [styles.statusContent, styles.iconActive] :
+                 [ styles.statusContent, styles.iconActive ] :
                  styles.statusContent }
                 >
 
