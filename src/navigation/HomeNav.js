@@ -8,7 +8,7 @@ import LoginScreen from '../component/LoginScreen';
 
 const Stack = createStackNavigator();
 
-console.log(Stack.Screen.route)
+// console.log(Stack.Screen.route)
 
 function HomeNavigator() {
     return (

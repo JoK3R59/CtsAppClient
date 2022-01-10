@@ -1,9 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, Dimensions } from 'react-native';
 
 import _subLogin from '../_shared/_subLogin';
 import DeliveryProgress from './DeliveryProgress';
 import DeliveryRequest from './DeliveryRequest';
+
+const { width, height} = Dimensions.get('window');
+// const windowHeight = Dimensions.get('window').height;
 
 const HomeScreen = ({ navigation }) => {
 
@@ -13,21 +16,17 @@ const HomeScreen = ({ navigation }) => {
 
             <_subLogin navigation = { navigation }/>
 
-            <Text style = { styles.header }>
-                Livraison en cours... :
-            </Text>
+            <DeliveryProgress windowWidth = { width }/>
 
-            <DeliveryProgress />
-
-            <Text style = { styles.header }>
+            {/* <Text style = { styles.header }>
                 Demande de livraison :
-            </Text>
+            </Text> */}
 
-            <DeliveryRequest />
+            <DeliveryRequest windowWidth = { width }/>
 
             <Button
              onPress={ () => {
-                 navigation.navigate('Contact')
+                navigation.navigate('Contact')
              }}
              title="Nous Contacter"
              color="#841584"

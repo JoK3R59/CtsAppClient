@@ -30,7 +30,7 @@ const LoginScreen = ({ route }) => {
         } else {
             return false
         }
-    };
+    }; 
     
     return (
 

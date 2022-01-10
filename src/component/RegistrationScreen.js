@@ -9,9 +9,14 @@ import _DataRegister from './_registration/_DataRegister';
 import _LoginBtn from './_login/_LoginBtn';
 
 // width permet d'obtenir la dimension du mobile Horizontalement 
-const { width } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
-const RegistrationScreen = ({ navigation }) => {
+// console.log(width, height);
+
+const RegistrationScreen = ({ navigation, goBack }) => {
+
+    // TODO faire la configuration du bouton retour pour aller a Home
+    console.log(navigation)
 
     // stepRegister permet d'afficher les Etapes d'inscription - false = Compte / true = Données
     const [ stepRegister, setStepRegister ] = useState(false)

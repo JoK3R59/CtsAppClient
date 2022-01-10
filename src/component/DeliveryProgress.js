@@ -1,29 +1,23 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-const DeliveryProgress = () => {
+import _ProgressContent from './_ProgressContainer/_ProgressContent';
+
+import userDelivery from '../../data/DataDelivery';
+
+const DeliveryProgress = ({ windowWidth }) => {
 
     return (
         
-        <View style = {[ styles.box, { flexDirection : "row" }]}>
+        <View>
+
+            <Text style = {[ styles.header, { width: windowWidth }]}>
+                Livraison en cours... :
+            </Text>
 
             <View style = { styles.content }>
 
-                <Text>2 Produits</Text>
-            </View>
-
-            <View style = {[ styles.content, { flexDirection : "column" }]}>
-
-                <Text>Mardi 25 Septembre</Text>
-
-                <Text>17h00 ~ 19h00</Text>
-
-                <Text>En cours de livraison</Text>
-            </View>
-
-            <View style = { styles.content }>
-                
-                <Text>{'>'}</Text>
+                <_ProgressContent item={userDelivery}/>
             </View>
         </View>
     )
@@ -32,20 +26,13 @@ const DeliveryProgress = () => {
 const styles = StyleSheet.create ({
     header: {
         backgroundColor: `#f0f8ff`,
-        width: '100%',
         borderWidth: 0.5,
-        padding: 10,
+        paddingHorizontal: 20,
+        paddingVertical: 10,
         fontSize: 24
     },
-    box: {
-        marginVertical: 12,
-        padding: 10,
-        borderWidth: 0.5,
-    },
     content: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingHorizontal: 12
+        marginHorizontal: 30
     }
 });
 
