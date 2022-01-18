@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import _ProgressContent from './_ProgressContainer/_ProgressContent';
+import _ProgressContainer from './_ProgressContainer/_ProgressContainer';
 
 import userDelivery from '../../data/DataDelivery';
 
@@ -17,7 +17,7 @@ const DeliveryProgress = ({ windowWidth }) => {
 
             <View style = { styles.content }>
 
-                <_ProgressContent item={userDelivery}/>
+                <_ProgressContainer item={userDelivery}/>
             </View>
         </View>
     )

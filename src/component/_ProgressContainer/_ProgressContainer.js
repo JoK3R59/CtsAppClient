@@ -2,49 +2,41 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
-// import _ProgressBar from '../../_shared/_ProgressBar';
+import _ProgressBar from '../../_shared/_ProgressBar';
+import _thumbnailProgress from '../_ProgressContainer/_thumbnailProgress';
+import _extandedProgress from '../_ProgressContainer/_extandedProgress';
 
-const _RequestContent = ({ item }) => {
+const _ProgressContainer = ({ item }) => {
 
     const [ extend, setExtend ] = useState(false);
 
     const onPressBtn = () => extend ? setExtend(false) : setExtend(true);
 
     // console.log(item.user1);
-    const user = item.user1;
+    const data = item.user1;
 
     return (
         
         <View style = {[ styles.box, { flexDirection : "row" }]}>
 
-            <View style = {[ styles.content, { flex: 1 }]}>
+            { extend ?
+             null :
+             <View style = {[ styles.content, { flex: 1 }]}>
                 
-                <Text>2 Produits</Text>
+                <Text>{ data.item } Produits</Text>
+             </View>
+            }
+
+            <View style = {{ flexDirection : "column", flex: 3 }}>
+
+                { extend ?
+                 <_extandedProgress data = { data }/> :
+                 <_thumbnailProgress data = { data }/> 
+                }
             </View>
 
-            <View style = {{ flexDirection : "column", flex: 2 }}>
+            <View style = {[ styles.content, { flex: 0.5 }]}>
 
-                <View>
-
-                    <Text>Fait le :</Text>
-
-                    <Text style = {{ alignSelf: 'center', fontWeight: 'bold' }}>
-                        { user.madeDate }
-                    </Text>
-                </View>
-
-                <View>
-
-                    <Text>Prévu pour :</Text>
-
-                    <Text style = {{ alignSelf: 'center', fontWeight: 'bold' }}>
-                        { user.date }
-                    </Text>
-                </View>
-            </View>
-
-            <View style = {[ styles.content, { flex: 1 }]}>
-                
                 <TouchableOpacity
                 //  style = {}
                  onPress = { onPressBtn }
@@ -81,4 +73,4 @@ const styles = StyleSheet.create ({
     }
 });
 
-export default _RequestContent;
+export default _ProgressContainer;
