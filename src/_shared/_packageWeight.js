@@ -8,12 +8,14 @@ const _packageWeight = ({ weight }) => {
 
     function selectIcon (weight) {
 
-        let number = Number(weight)
+        let poids = parseInt(weight)
+
+        // console.log(typeof poids)
         
-        if(number <= 20) {
+        if(poids <= 20) {
             return <Feather name="feather" size={24} color="black" />
     
-        } else if(number > 20 & number < 50) {
+        } else if(poids > 20 & poids < 50) {
             return <Octicons name="package" size={24} color="black" />
             
         } else {

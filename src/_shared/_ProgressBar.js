@@ -44,11 +44,27 @@ function statusProgress(number) {
     }
 };
 
-const _ProgressBar = ({ deliveryStatut }) => {
+const _ProgressBar = ({ deliveryStatut, params }) => {
 
-    // console.log(deliveryStatut)
+    // console.log(params)
 
     let status = statusProgress(deliveryStatut);
+
+    let width = (params) => {
+        if (params != undefined) {
+            return params.width
+        } else {
+            return 100
+        }
+    };
+
+    let height = (params) => {
+        if (params != undefined) {
+            return params.height
+        } else {
+            return 10
+        }
+    };
 
     return (
 
@@ -56,10 +72,10 @@ const _ProgressBar = ({ deliveryStatut }) => {
 
             <Progress.Bar
              progress={status.progress}
-             width={100}
+             width={width(params)}
              color={status.color}
              borderWidth={0.8}
-             height={10}
+             height={height(params)}
             />
 
             <Text>{ status.text }</Text>

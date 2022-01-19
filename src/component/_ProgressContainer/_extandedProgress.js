@@ -13,14 +13,18 @@ const _extandedProgress = ({ data }) => {
 
     const renderPackages = ({ item }) => (
 
-        <View style={{ flexDirection:'row', justifyContent: 'space-between' }}>
-
-            <Text>{ item.quantity }</Text>
-            <Text>{ item.name }</Text>
-            <_packageWeight weight={ item.weight }/>
+        <View style={{ flexDirection:'row' }}>
+            <View style={{ flex: 1, marginLeft: 20 }}>
+                <Text>{ item.quantity.toString() }</Text>
+            </View>
+            <View style={{ flex: 3 }}>
+                <Text>{ item.name }</Text>
+            </View>
+            <View style={{ flex: 1 }}>
+                <_packageWeight weight={ item.weight }/>
+            </View>
         </View>
     );
-    console.log(data.packages[0].quantity)
 
     return (
         
@@ -28,36 +32,38 @@ const _extandedProgress = ({ data }) => {
 
             <View style = { styles.dateHour }>
 
-                <Text style = {{ fontWeight: 'bold' }}>
+                <Text style = {{ fontWeight: 'bold', fontSize: 20 }}>
                     { data.date }
                 </Text>
 
                 <Text>{ data.timetableFirst } ~ { data.timetableSecond }</Text>
             </View>
 
-            <View style = {{ marginLeft : 5 }}>
+            <View style = {{ alignItems: 'center' }}>
 
                 <View style = {{ flexDirection : 'row' }}>
 
                     <AntDesign name="checksquare" size={18} color="black" />
 
-                    <Text style = {{ paddingLeft : 5 }}>- Adresse d'enlèvement.</Text>
+                    <Text style = {{ paddingLeft : 5 }}>- Adresse d'enlèvement</Text>
                 </View>
 
                 <Text>{ pickupAddress.number } { pickupAddress.street }, à { pickupAddress.city }.</Text>
 
-                <Text>{ pickupAddress.zipCode }.</Text>
+                <Text>{ pickupAddress.zipCode }</Text>
+
+                {/* ESPACE A AJOUTER POUR AFFICHER DES LIGNES */}
 
                 <View style = {{ flexDirection : 'row' }}>
 
                     <AntDesign name="minussquare" size={18} color="black" />
 
-                    <Text style = {{ paddingLeft : 5 }}>- Adresse de livraison.</Text>
+                    <Text style = {{ paddingLeft : 5 }}>- Adresse de livraison</Text>
                 </View>
 
                 <Text>{ userAddress.number } { userAddress.street }, à { userAddress.city }.</Text>
 
-                <Text>{ userAddress.zipCode }.</Text>
+                <Text>{ userAddress.zipCode }</Text>
             </View>
 
             <View style = { styles.boxContent }>
@@ -65,13 +71,13 @@ const _extandedProgress = ({ data }) => {
                 <FlatList
                  data={ data.packages}
                  renderItem={ renderPackages }
-                 keyExtractor={ item => item.id }
+                 keyExtractor={(item) => item.id.toString()} 
                 />
             </View>
 
             <View style = {{ marginVertical: 5 }} >
 
-                <_ProgressBar deliveryStatut={ data.deliveryStatut }/>
+                <_ProgressBar deliveryStatut={ data.deliveryStatut } params={{ height : 20, width : 200 }}/>
             </View>
 
             <View style = {{ marginLeft: 5 }}>
@@ -90,7 +96,8 @@ const _extandedProgress = ({ data }) => {
 const styles = StyleSheet.create ({
     dateHour: {
         flexDirection: 'row',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        marginBottom: 16,
     },
     content: {
         alignItems: 'center',
