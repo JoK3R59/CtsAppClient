@@ -3,8 +3,8 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 import _ProgressBar from '../../_shared/_ProgressBar';
-import _thumbnailProgress from '../_ProgressContainer/_thumbnailProgress';
-import _extandedProgress from '../_ProgressContainer/_extandedProgress';
+import _thumbnailProgress from './_thumbnailProgress';
+import _extandedProgress from './_extandedProgress';
 
 const _ProgressContainer = ({ item }) => {
 
@@ -21,7 +21,7 @@ const _ProgressContainer = ({ item }) => {
 
             { extend ?
              null :
-             <View style = {[ styles.content, { flex: 1 }]}>
+             <View style = {[ styles.content, { flex: 2 }]}>
                 
                 <Text>{ data.item } Produits</Text>
              </View>
@@ -35,7 +35,7 @@ const _ProgressContainer = ({ item }) => {
                 }
             </View>
 
-            <View style = {[ styles.content, { flex: 0.5 }]}>
+            <View style = {[ styles.content, { flex: 1 }]}>
 
                 <TouchableOpacity
                 //  style = {}

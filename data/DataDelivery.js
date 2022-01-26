@@ -3,11 +3,13 @@ const userDelivery = {
         idUser: 1, // ID utilisateur
         item: 2, // nombre de colis
         timetableFirst: "17h00", // Horaire d'ouverture pour livraison
-        timetableSecond: "19h00", // Horaire dde fermeture pour livraison
+        timetableSecond: "19h00", // Horaire de fermeture pour livraison
         // 0=ERROR | 1=Enlèvement | 2=En cours | 3=Livré | 4= Incident
         deliveryStatut: 2, // Statut de la livraison
         madeDate: 'Samedi 22 Septembre', // date de la mise en ligne
         date: "Mardi 25 Septembre", // date de réception prévu
+        tailgate: true, // Hayon
+        fragile: true, // Produit Fragile
         address : { // REVOIR la mise en place de ADDRESS et Packages pour la liste de données
             user: {
                 city: 'Mauffans',

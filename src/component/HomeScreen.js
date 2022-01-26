@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, Dimensions } from 'react-native';
+import { StyleSheet, Button, Dimensions, ScrollView } from 'react-native';
 
 import _subLogin from '../_shared/_subLogin';
 import DeliveryProgress from './DeliveryProgress';
@@ -11,8 +11,8 @@ const { width, height} = Dimensions.get('window');
 const HomeScreen = ({ navigation }) => {
 
     return (
-
-        <View  style = { styles.container }>
+        // Error logYellow sur ScrollView "VirtualizedLists", a cause du FlatList contenu dans les enfants.
+        <ScrollView  style = { styles.container }>
 
             <_subLogin navigation = { navigation }/>
 
@@ -25,13 +25,13 @@ const HomeScreen = ({ navigation }) => {
             <DeliveryRequest windowWidth = { width }/>
 
             <Button
-             onPress={ () => {
+            onPress={ () => {
                 navigation.navigate('Contact')
-             }}
-             title="Nous Contacter"
-             color="#841584"
+            }}
+            title="Nous Contacter"
+            color="#841584"
             />
-        </View>
+        </ScrollView>
     )
 };
 
@@ -39,7 +39,7 @@ const styles = StyleSheet.create ({
     container: {
         flex: 1,
         // justifyContent: 'center',
-        alignItems: 'center',
+        // alignItems: 'center',
         backgroundColor: 'white',
         height: 'auto'
     },

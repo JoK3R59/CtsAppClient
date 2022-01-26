@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, CheckBox } from 'react-native';
 
 import { AntDesign } from '@expo/vector-icons';
 
 import _ProgressBar from '../../_shared/_ProgressBar';
 import _packageWeight from '../../_shared/_packageWeight';
 
-const _extandedProgress = ({ data }) => {
+const _extandedRequest = ({ data }) => {
 
     const pickupAddress = data.address.pickupAddress;
     const userAddress = data.address.user;
@@ -22,7 +22,7 @@ const _extandedProgress = ({ data }) => {
             <View style={{ flex: 3 }}>
                 <Text>{ item.name }</Text>
             </View>
-            
+
             <View style={{ flex: 1 }}>
                 <_packageWeight weight={ item.weight }/>
             </View>
@@ -35,11 +35,11 @@ const _extandedProgress = ({ data }) => {
 
             <View style = { styles.dateHour }>
 
-                <Text style = {{ fontWeight: 'bold', fontSize: 20 }}>
-                    { data.date }
-                </Text>
+                <Text>Fait le :</Text>
 
-                <Text>{ data.timetableFirst } ~ { data.timetableSecond }</Text>
+                <Text style = {{ fontWeight: 'bold', fontSize: 20 }}>
+                    { data.madeDate }
+                </Text>
             </View>
 
             <View style = {{ alignItems: 'center' }}>
@@ -69,6 +69,15 @@ const _extandedProgress = ({ data }) => {
                 <Text>{ userAddress.zipCode }</Text>
             </View>
 
+            <View style = {[ styles.dateHour, { marginVertical: 5 }]}>
+
+                <Text>Prévu pour :</Text>
+
+                <Text style = {{ fontWeight: 'bold', fontSize: 20 }}>
+                    { data.date }
+                </Text>
+            </View>
+
             <View style = { styles.boxContent }>
 
                 <FlatList
@@ -78,12 +87,31 @@ const _extandedProgress = ({ data }) => {
                 />
             </View>
 
-            <View style = {{ marginVertical: 5 }} >
+            <View style = {{ flexDirection: "column" }}>
 
-                <_ProgressBar deliveryStatut={ data.deliveryStatut } params={{ height : 20, width : 200 }}/>
+                <View style = {{ flexDirection: "row", justifyContent: "space-around"}}>
+                    {/* CHANGER CHECKBOX -> https://github.com/WrathChaos/react-native-bouncy-checkbox */}
+                    <CheckBox 
+                    value={data.tailgate}
+                    disabled={true}
+                    style={styles.checkbox}
+                    />
+                    {/* CHANGER CHECKBOX -> https://github.com/WrathChaos/react-native-bouncy-checkbox */}
+                    <CheckBox 
+                    value={data.fragile}
+                    disabled={true}
+                    style={styles.checkbox}
+                    />
+                </View>
+
+                <View style = {{ flexDirection: "row", justifyContent: "space-around", paddingLeft: 10 }}>
+                    <Text>Hayon</Text>
+                    <Text>Fragile</Text>
+                </View>
+                
             </View>
 
-            <View style = {{ marginLeft: 5 }}>
+            <View style = {{ marginLeft: 5, marginVertical: 5 }}>
 
                 <Text>Note pour livreur :</Text>
 
@@ -118,7 +146,7 @@ const styles = StyleSheet.create ({
         margin: 5,
         padding: 5,
         borderWidth: 2
-    }
+    },
 });
 
-export default _extandedProgress;
+export default _extandedRequest;
