@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, TextInput, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Dimensions, Button } from 'react-native';
+
+// REDUX
+import { completeStepRegister, addDataUser } from '../../redux/actions'
 
 const { width } = Dimensions.get('window');
 
-const _DataRegister = () => {
+const _DataRegister = ({dispatch}) => {
 
     const [ lastName, setLastName ] = useState('')
 
@@ -47,9 +50,31 @@ const _DataRegister = () => {
         setCity(value)
     };
 
+    const completeEndStepRegister = (
+        lastName,
+        firstName,
+        phoneNumber,
+        adress,
+        zipCode,
+        city
+    ) => {
+
+        let dataUser = {
+            lastName,
+            firstName,
+            phoneNumber,
+            adress,
+            zipCode,
+            city
+        }
+        
+        dispatch(addDataUser(dataUser))
+        dispatch(completeStepRegister(true))
+    }
+
     return (
         
-        <View style = {{ alignItems: 'center', justifyContent: 'center' }}>
+        <View style = {{ alignItems: 'center', justifyContent: 'center', width: width }}>
 
             <View style = { styles.topContent }>
 
@@ -83,6 +108,7 @@ const _DataRegister = () => {
                      placeholder = "0102030405"
                      value = { phoneNumber }
                      onChangeText = { onChangePhoneNumber }
+                     keyboardType = 'phone-pad'
                     />
                 </View>
             </View>
@@ -100,18 +126,7 @@ const _DataRegister = () => {
                     />
                 </View>
 
-                <View style = { styles.viewContent }>
-
-                    <Text>Code Postal :</Text>
-                    
-                    <TextInput style = { styles.backgroundStyle }
-                     placeholder = "01234"
-                     value = { zipCode }
-                     onChangeText = { onChangeZipCode }
-                    />
-                </View>
-
-                <View style = {[ styles.viewContent, { marginBottom: 32 } ]}>
+                <View style = {styles.viewContent }>
 
                     <Text>Ville :</Text>
                     
@@ -121,7 +136,32 @@ const _DataRegister = () => {
                      onChangeText = { onChangeCity }
                     />
                 </View>
+
+                <View style = {[ styles.viewContent, { marginBottom: 32 } ]}>
+
+                    <Text>Code Postal :</Text>
+                    
+                    <TextInput style = { styles.backgroundStyle }
+                     placeholder = "01234"
+                     value = { zipCode }
+                     onChangeText = { onChangeZipCode }
+                     keyboardType = 'phone-pad'
+                    />
+                </View>
             </View>
+
+            <Button
+                onPress={ () => { completeEndStepRegister(
+                    lastName,
+                    firstName,
+                    phoneNumber,
+                    adress,
+                    zipCode,
+                    city
+                )}}
+                title= 'Terminer'
+                color= "#841584"
+            />
         </View>
     )
 };

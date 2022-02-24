@@ -10,6 +10,17 @@ const userDelivery = {
         date: "Mardi 25 Septembre", // date de réception prévu
         tailgate: true, // Hayon
         fragile: true, // Produit Fragile
+        user: {
+            name: 'Thierry',
+            firstName: 'Greluche',
+            birthdayDate: '01021980',
+            email: 'thierry.greluche@hotmail.fr',
+            password: 'azerty',
+            address: '1 Rue du pou-qui-grimpe',
+            city: 'Coutances',
+            zipCode: '99000',
+            phoneNumber: '0601020304'
+        },
         address : { // REVOIR la mise en place de ADDRESS et Packages pour la liste de données
             user: {
                 city: 'Mauffans',

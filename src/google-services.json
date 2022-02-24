@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "783034529610",
+    "firebase_url": "https://click-truck-service-19505-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "click-truck-service-19505",
+    "storage_bucket": "click-truck-service-19505.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783034529610:android:e809e3711c3c719c29f3b3",
+        "android_client_info": {
+          "package_name": "au.com.clicktruckservice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "783034529610-h943c412tdpbu9gc4gitb0b1q8agisj7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDunUvWZsVF4gto6QBBL_VlIITY4kfXDhk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "783034529610-h943c412tdpbu9gc4gitb0b1q8agisj7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

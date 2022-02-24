@@ -8,8 +8,6 @@ const textNextStepRegister = 'Accéder à votre boite e-mail pour valider votre 
 
 const LoginScreen = ({ route }) => {
 
-    // console.log(route.params)
-
     const [ email, setEmail ] = useState('')
 
     const onChangeEmail = value => {
@@ -25,7 +23,7 @@ const LoginScreen = ({ route }) => {
     // function permettant de vérifier si l'utilisateur provient de la page Inscription, ainsi le texte de la page Connexion changera
     const onChangeStepRegister = () => {
 
-        if ( route.params !== undefined ) {
+        if ( route.params != undefined ) {
             return true
         } else {
             return false
