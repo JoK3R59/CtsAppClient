@@ -35,7 +35,7 @@ const LoginScreen = ({ route }) => {
         }
     }; 
 
-    // Connexion
+    // Connexion à Firebase
     const handlerLogin = () => {
         auth
          .signInWithEmailAndPassword(email, password)
@@ -71,6 +71,8 @@ const LoginScreen = ({ route }) => {
                         placeholder = "Votre Adresse E-mail"
                         value = { email }
                         onChangeText = { onChangeEmail }
+                        keyboardType = 'email-address'
+                        // onEndEditing = { checkEmail }
                     />
                 </View>
 

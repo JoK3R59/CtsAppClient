@@ -7,7 +7,7 @@ import _DataRegister from './_registration/_DataRegister';
 import _LoginBtn from './_login/_LoginBtn';
 
 //** */ authentification Google
-//** */ import { auth } from '../utils/helpers';
+//** */ import { auth } from '../../google';
 
 // Firebase config
 import { auth } from '../../firebase';
@@ -75,7 +75,7 @@ const RegistrationScreen = ({ navigation, goBack }) => {
         navigation.replace('Connexion', { completeStepRegister : true })
     }
 
-    // Inscription sur FIREBASE
+    // Inscription sur Firebase
     const handlerSignUp = (userID) => {
         auth
          .createUserWithEmailAndPassword(userID.email, userID.password)
