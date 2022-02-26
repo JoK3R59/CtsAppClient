@@ -69,8 +69,8 @@ const RegistrationScreen = ({ navigation, goBack }) => {
     // methode permettant de terminer l'état lors de l'inscription
     const endStepRegister = () => {
 
-        console.log('utilisateur :', userID)
         handlerSignUp(userID)
+        console.log('utilisateur :', userID)
         console.log('données utilisateur :', dataID)
         navigation.replace('Connexion', { completeStepRegister : true })
     }

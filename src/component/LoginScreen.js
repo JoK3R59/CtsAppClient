@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, ScrollView, KeyboardAvoidingView, Dimensions } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+
+// Firebase config
+import { auth } from '../../firebase';
+
+const { width } = Dimensions.get('window');
 
 const textLogin = 'Introduisez votre adresse e-mail et votre mot de passe pour accéder à votre compte.';
 
@@ -29,48 +34,66 @@ const LoginScreen = ({ route }) => {
             return false
         }
     }; 
+
+    // Connexion
+    const handlerLogin = () => {
+        auth
+         .signInWithEmailAndPassword(email, password)
+         .then(userCredentials => {
+            const user = userCredentials.user;
+            console.log('Connexion avec : ', user.email)
+        })
+        .catch(error => alert(error.message))
+    }
     
     return (
 
         <View style = { styles.container }>
 
-            <FontAwesome name="user-circle-o" size={64} color="black" />
+            <View style = {{ alignItems: 'center', marginTop: 20 }}>
 
-            <Text style = { styles.textStyle }>
-                { onChangeStepRegister() ? textNextStepRegister : textLogin }
-            </Text>
+                <FontAwesome name="user-circle-o" size={64} color="black" />
 
-            <View>
-
-                <Text style = { styles.viewContent }>
-                    Utilisateur :
+                <Text style = {[ styles.textStyle, { marginTop: 10 }]}>
+                    { onChangeStepRegister() ? textNextStepRegister : textLogin }
                 </Text>
-
-                <TextInput style = { styles.backgroundStyle }
-                 placeholder = "Votre Adresse E-mail"
-                 value = { email }
-                 onChangeText = { onChangeEmail }
-                />
             </View>
 
-            <View style = {{ marginBottom: 64 }}>
+            <ScrollView style = { styles.scrollView }>
 
-                <Text style = { styles.viewContent }>
-                    Mot de passe :
-                </Text>
+                <View style = {{ alignItems: 'center', marginVertical: 20 }}>
 
-                <TextInput style = { styles.backgroundStyle }
-                 placeholder = "*****"
-                 value = { password }
-                 onChangeText = { onChangePassword }
-                />
-            </View>
+                    <Text style = { styles.viewContent }>
+                        Utilisateur :
+                    </Text>
 
-            <Button
-             onPress={ () => {}}
-             title= 'Connexion'
-             color= "#06d6a0"
-            />
+                    <TextInput style = { styles.backgroundStyle }
+                        placeholder = "Votre Adresse E-mail"
+                        value = { email }
+                        onChangeText = { onChangeEmail }
+                    />
+                </View>
+
+                <View style = {{ alignItems: 'center'}}>
+
+                    <Text style = { styles.viewContent }>
+                        Mot de passe :
+                    </Text>
+
+                    <TextInput style = {[ styles.backgroundStyle, { marginBottom: 40 }]}
+                        placeholder = "*****"
+                        value = { password }
+                        onChangeText = { onChangePassword }
+                        secureTextEntry
+                    />
+
+                    <Button
+                        onPress={ handlerLogin }
+                        title= 'Connexion'
+                        color= "#06d6a0"
+                    />
+                </View>
+            </ScrollView>
         </View>
     )
 };
@@ -81,7 +104,10 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-evenly',
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+    },
+    scrollView: {
+        width : width,
     },
     textStyle: {
         textAlign: 'center',
