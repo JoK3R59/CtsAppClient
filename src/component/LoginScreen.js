@@ -5,13 +5,20 @@ import { FontAwesome } from '@expo/vector-icons';
 // Firebase config
 import { auth } from '../../firebase';
 
+// REDUX
+import { useDispatch } from 'react-redux';
+import { userConnected } from '../redux/actions';
+
 const { width } = Dimensions.get('window');
 
 const textLogin = 'Introduisez votre adresse e-mail et votre mot de passe pour accéder à votre compte.';
 
 const textNextStepRegister = 'Accéder à votre boite e-mail pour valider votre compte, puis connectez-vous';
 
-const LoginScreen = ({ route }) => {
+const LoginScreen = ({ route, navigation }) => {
+
+    // REDUX fonction dispatch (envoi des données du store)
+    const dispatch = useDispatch()
 
     const [ email, setEmail ] = useState('')
 
@@ -37,11 +44,15 @@ const LoginScreen = ({ route }) => {
 
     // Connexion à Firebase
     const handlerLogin = () => {
+
         auth
          .signInWithEmailAndPassword(email, password)
          .then(userCredentials => {
+
             const user = userCredentials.user;
             console.log('Connexion avec : ', user.email)
+            dispatch(userConnected(user.email))
+            navigation.navigate('Accueil')
         })
         .catch(error => alert(error.message))
     }
@@ -61,39 +72,42 @@ const LoginScreen = ({ route }) => {
 
             <ScrollView style = { styles.scrollView }>
 
-                <View style = {{ alignItems: 'center', marginVertical: 20 }}>
+                <View style = {{ alignItems: 'center' }}>
 
-                    <Text style = { styles.viewContent }>
-                        Utilisateur :
-                    </Text>
+                    <View style = {{ marginVertical: 20 }}>
 
-                    <TextInput style = { styles.backgroundStyle }
-                        placeholder = "Votre Adresse E-mail"
-                        value = { email }
-                        onChangeText = { onChangeEmail }
-                        keyboardType = 'email-address'
-                        // onEndEditing = { checkEmail }
-                    />
-                </View>
+                        <Text style = { styles.viewContent }>
+                            Adresse E-mail :
+                        </Text>
 
-                <View style = {{ alignItems: 'center'}}>
+                        <TextInput style = { styles.backgroundStyle }
+                            placeholder = "Votre Adresse E-mail"
+                            value = { email }
+                            onChangeText = { onChangeEmail }
+                            keyboardType = 'email-address'
+                            // onEndEditing = { checkEmail }
+                        />
+                    </View>
 
-                    <Text style = { styles.viewContent }>
-                        Mot de passe :
-                    </Text>
+                    <View>
 
-                    <TextInput style = {[ styles.backgroundStyle, { marginBottom: 40 }]}
-                        placeholder = "*****"
-                        value = { password }
-                        onChangeText = { onChangePassword }
-                        secureTextEntry
-                    />
+                        <Text style = { styles.viewContent }>
+                            Mot de passe :
+                        </Text>
 
-                    <Button
-                        onPress={ handlerLogin }
-                        title= 'Connexion'
-                        color= "#06d6a0"
-                    />
+                        <TextInput style = {[ styles.backgroundStyle, { marginBottom: 40 }]}
+                            placeholder = "*****"
+                            value = { password }
+                            onChangeText = { onChangePassword }
+                            secureTextEntry
+                        />
+
+                        <Button
+                            onPress={ handlerLogin }
+                            title= 'Connexion'
+                            color= "#06d6a0"
+                        />
+                    </View>
                 </View>
             </ScrollView>
         </View>

@@ -2,7 +2,8 @@ import {
     ON_CHANGE_STEP_REGISTER,
     ENDING_STEP_REGISTER,
     ADD_NEW_USER_EMAIL_PASSWORD,
-    ADD_NEW_DATA_USER
+    ADD_NEW_DATA_USER,
+    USER_CONNECTED
 } from "../actions/actionsTypesUsers";
 
 // Changer l'état de la page d'un utilisateur l'ors d'une inscription
@@ -74,6 +75,23 @@ export const dataUsers = (state = initialDataState, action) => {
                 dataID: action.payload.data
             }
 
+        default: 
+            return state
+    }
+};
+
+// utilisateur connecté
+const initialConnectedState = {
+    data : false
+};
+
+export const userConnectedTest = (state = initialConnectedState, action) => {
+    
+    switch (action.type) {
+        case USER_CONNECTED:
+            return {
+                data : action.payload.data
+            }
         default: 
             return state
     }

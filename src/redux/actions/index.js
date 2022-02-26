@@ -2,7 +2,8 @@ import {
     ON_CHANGE_STEP_REGISTER,
     ENDING_STEP_REGISTER,
     ADD_NEW_USER_EMAIL_PASSWORD,
-    ADD_NEW_DATA_USER
+    ADD_NEW_DATA_USER,
+    USER_CONNECTED
 } from './actionsTypesUsers';
 
 export const addUser = (data) => ({
@@ -31,4 +32,11 @@ export const completeStepRegister = (data) => ({
     payload: {
         data
     }
-})
+});
+
+export const userConnected = (data) => ({
+    type: USER_CONNECTED,
+    payload: {
+        data
+    }
+});

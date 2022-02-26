@@ -4,10 +4,10 @@ import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import _UserRegister from './_registration/_UserRegister';
 import _DataRegister from './_registration/_DataRegister';
-import _LoginBtn from './_login/_LoginBtn';
 
 //** */ authentification Google
 //** */ import { auth } from '../../google';
+//** */ import _LoginBtn from './_login/_LoginBtn';
 
 // Firebase config
 import { auth } from '../../firebase';

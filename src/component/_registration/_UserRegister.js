@@ -50,9 +50,31 @@ const _UserRegister = ({dispatch}) => {
     }
 
     // Function permettant de récupérer/vérifier l'Email et Password Valide lors de l'inscription
-    const onNextStepRegister = (dispatch, email, password, againPassword) => {   
+    const onNextStepRegister = ( dispatch, email, password, againPassword ) => {   
 
-        // Mot de passe vérification
+        // vérification du contenu input d'Email
+        if ( email === '' ) {
+
+            setErrorEmail(true)
+            setPlaceholderTextEmail('E-mail non valide')
+        }
+
+        // Vérification du Mot de passe
+        if ( password != againPassword ) {
+
+            setPassword('')
+            setAgainPassword('')
+            setPlaceholderTextPassword("Mot de passe non identique")
+            setErrorPassword(true)
+        } else if ( password.length < 6 ) {
+
+            setPassword('')
+            setAgainPassword('')
+            setPlaceholderTextPassword("6 caractères minimum")
+            setErrorPassword(true)
+        }
+
+        // Si le Mot de passe est correct ainsi que l'Email
         if ( password === againPassword && password.length >= 6 && !errorEmail ) {
             
             let newUser = {
@@ -61,26 +83,14 @@ const _UserRegister = ({dispatch}) => {
             }
             dispatch(addUser(newUser))
             dispatch(onChangeStepRegister(true))
-        } else if (password != againPassword) {
-
-            setPassword('')
-            setAgainPassword('')
-            setPlaceholderTextPassword("Mot de passe non identique")
-            setErrorPassword(true)
-        } else if (password.length < 6) {
-
-            setPassword('')
-            setAgainPassword('')
-            setPlaceholderTextPassword("6 caractères minimum")
-            setErrorPassword(true)
         }
     };
 
     return (
 
         <KeyboardAvoidingView
-         style = {{ alignItems: 'center', justifyContent: 'center' }}
-         behavior= {Platform.OS === "ios" ? "padding" : "height"}
+            style = {{ alignItems: 'center', justifyContent: 'center' }}
+            behavior= {Platform.OS === "ios" ? "padding" : "height"}
         >
             <View style = {{ alignItems: 'center', justifyContent: 'center', width: width }}>
                 
